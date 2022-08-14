@@ -21,17 +21,15 @@ for i=1:maxDepth
         
     end
     RooteNodes = [RooteNodes leafNode];
-    leafNodes = [leafNodes newleafNodes];
+    leafNodes = newleafNodes;
     leafNodes(1)=[];
    end
 end
 
 count = count-1;
 allNodes = [RooteNodes leafNodes];
-sourceNode = [allNodes.sourceNodeID];
-targetNode = [allNodes.id]
-targetNode(1)=[]
-
-g=digraph (sourceNode,targetNode);
+sourceNode = [leafNodes.sourceNodeID];
+targetNode = [leafNodes.id];
+g=digraph (allNodes.sourceNodeID,allNodes.id);
 p=plot(g);
-p.EdgeLabel = [allNodes.sourceEdgName];
+p.EdgeLabel = [leafNodes.sourceEdgName];
